@@ -94,7 +94,7 @@ class sgpa_result_page extends StatelessWidget {
                       height: 20,
                     ),
                     Text(
-                      obj.SGPAResult(),
+                      obj.sGpaResult(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 25.0,

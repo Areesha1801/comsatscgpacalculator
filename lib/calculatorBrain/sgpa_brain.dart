@@ -2,33 +2,35 @@ double result = 0.0;
 List growableList = [1, 2];
 
 class SGPABrain {
-  double cal;
-
-  double Sum = 0;
+  double cal = 0;
+  int c = 0;
+  double multiply = 1;
+  double sum = 0;
   double sumOfCreditHours = 0;
   void makeListZero() {
     growableList.length = 0;
   }
 
-  void PerformSum(
-      int noOfSubjects, double SubjectGpa, double creditHours, int counter) {
-    growableList.add(SubjectGpa * creditHours);
+  void performSum(
+      int noOfSubjects, double subjectGpa, double creditHours, int counter) {
+    multiply = subjectGpa * creditHours;
+    sumOfCreditHours = sumOfCreditHours + creditHours;
+    growableList.add(multiply);
     if (counter == noOfSubjects) {
-      SGPACalculator();
+      sGpaCalculator();
     }
   }
 
-  void SGPACalculator() {
-    int c = 0;
+  void sGpaCalculator() {
     while (growableList.length != null) {
-      Sum = Sum + growableList[c];
+      sum = sum + growableList[c];
       c++;
     }
 
-    result = Sum / sumOfCreditHours;
+    result = sum / sumOfCreditHours;
   }
 
-  String SGPAResult() {
+  String sGpaResult() {
     return result.toString();
   }
 }

@@ -26,7 +26,7 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
   double subjectGpa = 4;
   double subjectCreditHours = 4;
   int count = 1;
-  int noofsubjects = 0;
+  int noOfSubjects = 0;
   String dropdownValue_2 = '1';
   List<String> subjectNo = ['1', '2', '3', '4', '5', '6'];
   void getDropDownItem() {
@@ -35,6 +35,7 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
     });
   }
 
+  @override
   void initState() {
     obj.makeListZero();
     super.initState();
@@ -306,15 +307,16 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
             buttonTitle: 'CALCULATE',
             onTap: () {
               if (count == int.parse(dropdownValue_2)) {
-                obj.PerformSum(int.parse(dropdownValue_2), subjectGpa,
+                obj.performSum(int.parse(dropdownValue_2), subjectGpa,
                     subjectCreditHours, count);
                 count = 0;
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => sgpa_result_page()));
+              } else {
+                obj.performSum(int.parse(dropdownValue_2), subjectGpa,
+                    subjectCreditHours, count);
+                count++;
               }
-              count++;
-              obj.PerformSum(int.parse(dropdownValue_2), subjectGpa,
-                  subjectCreditHours, count);
             },
           ),
         ],
