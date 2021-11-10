@@ -13,11 +13,24 @@ import '../home_page.dart';
 
 class GpaAppPage extends StatefulWidget {
   const GpaAppPage({Key key}) : super(key: key);
+  static String holder = '';
+  static String holder_2 = '';
+  static List<Color> myList_1 = [];
+  static List<int> myList_2 = [];
   @override
   _GpaAppPageState createState() => _GpaAppPageState();
 }
 
 class _GpaAppPageState extends State<GpaAppPage> {
+  int count = 1;
+  String dropdownValue_2 = '1';
+  List<String> soundNo = ['1', '2', '3', '4', '5', '6'];
+  void getDropDownItem() {
+    setState(() {
+      GpaAppPage.holder_2 = dropdownValue_2;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,40 +100,46 @@ class _GpaAppPageState extends State<GpaAppPage> {
         children: <Widget>[
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                ReusableCard(
-                  onPress: () {
-                    setState(() {});
-                  },
-                  colour: null,
-                  cardChild: const IconContent(
-                    icon: FontAwesomeIcons.addressBook,
-                    label: 'Choose Number of Subjects',
-                    label1: 'Choose GPA of subject ',
-                  ),
-                ),
-                DropdownButton(
-                  value: dropdownValue,
-                  icon: const Icon(Icons.arrow_drop_down),
-                  iconSize: 24,
-                  elevation: 16,
-                  style: const TextStyle(color: Colors.black, fontSize: 18),
-                  underline: Container(
-                    height: 2,
-                    color: Colors.teal,
-                  ),
-                  onChanged: (data) {
-                    setState(() {
-                      dropdownValue = data.toString();
-                    });
-                  },
-                  items:
-                      colorName.map<DropdownMenuItem<String>>((String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    ReusableCard(
+                      onPress: () {
+                        setState(() {});
+                      },
+                      colour: null,
+                      cardChild: const IconContent(
+                        icon: FontAwesomeIcons.addressBook,
+                        label: 'Choose Number of Subjects',
+                        label1: 'Choose GPA of subject ',
+                      ),
+                    ),
+                    DropdownButton(
+                      value: dropdownValue_2,
+                      icon: const Icon(Icons.arrow_drop_down),
+                      iconSize: 24,
+                      elevation: 16,
+                      style: const TextStyle(color: Colors.black, fontSize: 18),
+                      underline: Container(
+                        height: 2,
+                        color: Colors.teal,
+                      ),
+                      onChanged: (data) {
+                        setState(() {
+                          dropdownValue_2 = data.toString();
+                        });
+                      },
+                      items:
+                          soundNo.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -209,7 +228,13 @@ class _GpaAppPageState extends State<GpaAppPage> {
           ),
           BottomButton(
             buttonTitle: 'Add',
-            onTap: () {},
+            onTap: () {
+              if (count == 6) {
+                count = 0;
+              }
+              count++;
+              getDropDownItem();
+            },
           ),
           BottomButton(
             buttonTitle: 'CALCULATE',
