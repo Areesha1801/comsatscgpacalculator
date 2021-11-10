@@ -23,8 +23,8 @@ class SGPAAppPage extends StatefulWidget {
 
 class _SGPAAppPageState extends State<SGPAAppPage> {
   SGPABrain obj = SGPABrain();
-  int subjectGpa = 4;
-  int subjectCreditHours = 4;
+  double subjectGpa = 4;
+  double subjectCreditHours = 4;
   int count = 1;
   int noofsubjects = 0;
   String dropdownValue_2 = '1';
@@ -33,6 +33,11 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
     setState(() {
       SGPAAppPage.holder_2 = dropdownValue_2;
     });
+  }
+
+  void initState() {
+    obj.makeListZero();
+    super.initState();
   }
 
   @override
@@ -179,7 +184,25 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
                                   setState(() {
-                                    subjectGpa--;
+                                    if (subjectGpa == 4) {
+                                      subjectGpa = 3.7;
+                                    } else if (subjectGpa == 3.7) {
+                                      subjectGpa = 3.3;
+                                    } else if (subjectGpa == 3.3) {
+                                      subjectGpa = 3.0;
+                                    } else if (subjectGpa == 3.0) {
+                                      subjectGpa = 2.7;
+                                    } else if (subjectGpa == 2.7) {
+                                      subjectGpa = 2.3;
+                                    } else if (subjectGpa == 2.3) {
+                                      subjectGpa = 2.0;
+                                    } else if (subjectGpa == 2.0) {
+                                      subjectGpa = 1.7;
+                                    } else if (subjectGpa == 1.7) {
+                                      subjectGpa = 1.3;
+                                    } else {
+                                      subjectGpa = 0.0;
+                                    }
                                   });
                                 }),
                             const SizedBox(
@@ -189,7 +212,27 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
                               icon: FontAwesomeIcons.plus,
                               onPressed: () {
                                 setState(() {
-                                  subjectGpa++;
+                                  if (subjectGpa == 4) {
+                                    subjectGpa = 4;
+                                  } else if (subjectGpa == 3.7) {
+                                    subjectGpa = 4;
+                                  } else if (subjectGpa == 3.3) {
+                                    subjectGpa = 3.7;
+                                  } else if (subjectGpa == 3.0) {
+                                    subjectGpa = 3.3;
+                                  } else if (subjectGpa == 2.7) {
+                                    subjectGpa = 3.0;
+                                  } else if (subjectGpa == 2.3) {
+                                    subjectGpa = 2.7;
+                                  } else if (subjectGpa == 2.0) {
+                                    subjectGpa = 2.3;
+                                  } else if (subjectGpa == 1.7) {
+                                    subjectGpa = 2.0;
+                                  } else if (subjectGpa == 1.3) {
+                                    subjectGpa = 1.7;
+                                  } else if (subjectGpa == 0.0) {
+                                    subjectGpa = 1.3;
+                                  }
                                 });
                               },
                             ),
@@ -221,7 +264,13 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
                               onPressed: () {
                                 setState(
                                   () {
-                                    subjectCreditHours--;
+                                    if (subjectCreditHours == 4) {
+                                      subjectCreditHours = 3;
+                                    } else if (subjectCreditHours == 3) {
+                                      subjectCreditHours = 2;
+                                    } else if (subjectCreditHours == 2) {
+                                      subjectCreditHours = 1;
+                                    }
                                   },
                                 );
                               },
@@ -233,7 +282,15 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
                                   setState(() {
-                                    subjectCreditHours++;
+                                    if (subjectCreditHours == 4) {
+                                      subjectCreditHours = 4;
+                                    } else if (subjectCreditHours == 3) {
+                                      subjectCreditHours = 4;
+                                    } else if (subjectCreditHours == 2) {
+                                      subjectCreditHours = 3;
+                                    } else if (subjectCreditHours == 1) {
+                                      subjectCreditHours = 2;
+                                    }
                                   });
                                 })
                           ],

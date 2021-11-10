@@ -41,7 +41,7 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 1), onDoneLoading);
+    return Timer(const Duration(seconds: 4), onDoneLoading);
   }
 
   onDoneLoading() async {
