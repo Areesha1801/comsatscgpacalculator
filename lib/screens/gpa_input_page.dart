@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 import '../home_page.dart';
-import 'input_page.dart';
 
 class GpaAppPage extends StatefulWidget {
   const GpaAppPage({Key key}) : super(key: key);
@@ -87,65 +86,43 @@ class _GpaAppPageState extends State<GpaAppPage> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
-              child: Row(
-            children: <Widget>[
-              Expanded(
-                child: ReusableCard(
+            child: Column(
+              children: [
+                ReusableCard(
                   onPress: () {
                     setState(() {});
                   },
-                  colour: Gender.male != null
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
+                  colour: null,
                   cardChild: const IconContent(
-                    icon: FontAwesomeIcons.mars,
-                    label: 'MALE',
+                    icon: FontAwesomeIcons.addressBook,
+                    label: 'Choose Number of Subjects',
+                    label1: 'Choose GPA of subject ',
                   ),
                 ),
-              ),
-              Expanded(
-                child: ReusableCard(
-                  onPress: () {
-                    setState(() {});
+                DropdownButton(
+                  value: dropdownValue,
+                  icon: const Icon(Icons.arrow_drop_down),
+                  iconSize: 24,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.black, fontSize: 18),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.teal,
+                  ),
+                  onChanged: (data) {
+                    setState(() {
+                      dropdownValue = data.toString();
+                    });
                   },
-                  colour: Gender.female != null
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
-                  cardChild: const IconContent(
-                    icon: FontAwesomeIcons.venus,
-                    label: 'FEMALE',
-                  ),
+                  items:
+                      colorName.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
                 ),
-              ),
-            ],
-          )),
-          Expanded(
-            child: ReusableCard(
-              colour: kActiveCardColour,
-              cardChild: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'HEIGHT',
-                    style: kLabelTextStyle,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: const <Widget>[
-                      Text(
-                        "",
-                        style: kNumberTextStyle,
-                      ),
-                      Text(
-                        'cm',
-                        style: kLabelTextStyle,
-                      )
-                    ],
-                  ),
-                ],
-              ),
+              ],
             ),
           ),
           Expanded(
@@ -158,7 +135,7 @@ class _GpaAppPageState extends State<GpaAppPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text(
-                          'WEIGHT',
+                          'Subject GPA',
                           style: kLabelTextStyle,
                         ),
                         const Text(
@@ -195,7 +172,7 @@ class _GpaAppPageState extends State<GpaAppPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         const Text(
-                          'AGE',
+                          'Credit Hours',
                           style: kLabelTextStyle,
                         ),
                         const Text(
@@ -229,6 +206,10 @@ class _GpaAppPageState extends State<GpaAppPage> {
                 ),
               ],
             ),
+          ),
+          BottomButton(
+            buttonTitle: 'Add',
+            onTap: () {},
           ),
           BottomButton(
             buttonTitle: 'CALCULATE',
