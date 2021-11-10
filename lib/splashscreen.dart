@@ -8,7 +8,7 @@ void main() {
     const MaterialApp(
       home: Scaffold(
         backgroundColor: Colors.white,
-        body: SplashScreen(),
+        body: HomePage(),
       ),
     ),
   );
@@ -41,11 +41,11 @@ class SplashScreenState extends State<SplashScreen> {
   }
 
   Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 2), onDoneLoading);
+    return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
   onDoneLoading() async {
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => HomePage()));
+    Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const HomePage()));
   }
 }

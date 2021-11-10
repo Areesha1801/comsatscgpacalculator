@@ -1,8 +1,11 @@
+import 'package:comsatscgpacalculator/screens/cgpa_input_page.dart';
 import 'package:flutter/material.dart';
-import 'package:comsatscgpacalculator/screens/input_page.dart';
+import 'gpa.dart';
+import '../home_page.dart';
+import 'sgpa.dart';
 
-class BMICalculator extends StatelessWidget {
-  const BMICalculator({Key key}) : super(key: key);
+class cgpa extends StatelessWidget {
+  const cgpa({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +14,7 @@ class BMICalculator extends StatelessWidget {
         primaryColor: const Color(0xFF0A0E21),
         scaffoldBackgroundColor: const Color(0xFF0A0E21),
       ),
-      home: const InputPage(),
+      home: const CGPAAppPage(),
     );
   }
 }

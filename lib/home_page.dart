@@ -1,12 +1,13 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:comsatscgpacalculator/sgpa.dart';
+import 'package:comsatscgpacalculator/mains/sgpa.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'cgpa.dart';
-import 'gpa.dart';
+import 'mains/cgpa.dart';
+import 'mains/gpa.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Home Page'),
         actions: [
           IconButton(
-            icon: Image.asset('images/img1.jpg'),
+            icon: Image.asset('images/img2.png'),
             onPressed: () {},
           ),
         ],
@@ -68,30 +69,17 @@ class HomePagePage extends StatelessWidget {
         ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            const SizedBox(width: 10.0, height: 100.0),
-            const Text(
-              'Choose Calculator',
+          children: const <Widget>[
+            SizedBox(width: 10.0, height: 100.0),
+            Text(
+              'Choose Your Calculator',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 40.0,
                 color: Colors.teal,
               ),
             ),
-            const SizedBox(width: 15.0, height: 100.0),
-            DefaultTextStyle(
-              style: const TextStyle(
-                fontSize: 35.0,
-                color: Colors.black87,
-              ),
-              child: AnimatedTextKit(
-                  repeatForever: true,
-                  isRepeatingAnimation: true,
-                  animatedTexts: [
-                    RotateAnimatedText('Your'),
-                    RotateAnimatedText('Calculator'),
-                  ]),
-            ),
+            SizedBox(width: 15.0, height: 100.0),
           ],
         ),
         FlatButton(
@@ -106,7 +94,7 @@ class HomePagePage extends StatelessWidget {
           ),
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => gpa())); //The user picked true.
+                builder: (context) => const gpa())); //The user picked true.
           },
         ),
         FlatButton(
@@ -121,7 +109,7 @@ class HomePagePage extends StatelessWidget {
           ),
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => sgpa())); //The user picked true.
+                builder: (context) => const sgpa())); //The user picked true.
           },
         ),
         FlatButton(
@@ -136,7 +124,7 @@ class HomePagePage extends StatelessWidget {
           ),
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => cgpa())); //The user picked true.
+                builder: (context) => const cgpa())); //The user picked true.
           },
         ),
         const SizedBox(
