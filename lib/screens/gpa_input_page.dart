@@ -13,9 +13,7 @@ import '../home_page.dart';
 
 class GpaAppPage extends StatefulWidget {
   const GpaAppPage({Key key}) : super(key: key);
-  static String holder = '';
   static String holder_2 = '';
-  static List<Color> myList_1 = [];
   static List<int> myList_2 = [];
   @override
   _GpaAppPageState createState() => _GpaAppPageState();

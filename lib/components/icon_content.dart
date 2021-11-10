@@ -12,11 +12,12 @@ class IconContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Icon(
           icon,
-          size: 80.0,
+          size: 60.0,
         ),
         const SizedBox(
           height: 15.0,
