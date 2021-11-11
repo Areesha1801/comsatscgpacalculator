@@ -1,9 +1,11 @@
+import 'package:comsatscgpacalculator/calculatorBrain/gpa_brain.dart';
 import 'package:comsatscgpacalculator/mains/cgpa.dart';
 import 'package:comsatscgpacalculator/mains/gpa.dart';
 import 'package:comsatscgpacalculator/mains/sgpa.dart';
 import 'package:flutter/material.dart';
-
 import '../../home_page.dart';
+
+GPABrain obj = GPABrain();
 
 class gpa_result_page extends StatelessWidget {
   const gpa_result_page({Key key}) : super(key: key);
@@ -72,7 +74,45 @@ class gpa_result_page extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Expanded(
+            flex: 6,
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    const Text(
+                      'This is Your Semester GPA\n ',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      obj.gpaResult(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 25.0,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
