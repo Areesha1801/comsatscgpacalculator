@@ -13,32 +13,31 @@ import 'package:comsatscgpacalculator/components/icon_content.dart';
 import 'package:comsatscgpacalculator/components/reusable_card.dart';
 import 'package:comsatscgpacalculator/components/round_icon_button.dart';
 
+SGPABrain obj = SGPABrain();
+double subjectGpa = 4;
+double subjectCreditHours = 4;
+double sumOfCredits = 0;
+double finalGpa = 0;
+double store = 0;
+double sStore = 0;
+int count = 1;
+int noOfSubjects = 0;
+double dropdownValue_2 = 1;
+
 class SGPAAppPage extends StatefulWidget {
   const SGPAAppPage({Key key}) : super(key: key);
-  static String holder_2 = '';
+  static double holder_2 = 1;
   static List<int> myList_2 = [];
   @override
   _SGPAAppPageState createState() => _SGPAAppPageState();
 }
 
 class _SGPAAppPageState extends State<SGPAAppPage> {
-  SGPABrain obj = SGPABrain();
-  double subjectGpa = 4;
-  double subjectCreditHours = 4;
-  int count = 1;
-  int noOfSubjects = 0;
-  String dropdownValue_2 = '1';
-  List<String> subjectNo = ['1', '2', '3', '4', '5', '6'];
+  List<double> subjectNo = [1, 2, 3, 4, 5, 6];
   void getDropDownItem() {
     setState(() {
       SGPAAppPage.holder_2 = dropdownValue_2;
     });
-  }
-
-  @override
-  void initState() {
-    obj.makeListZero();
-    super.initState();
   }
 
   @override
@@ -127,7 +126,7 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
                           label1: '',
                         ),
                       ),
-                      DropdownButton(
+                      DropdownButton<double>(
                         value: dropdownValue_2,
                         icon: const Icon(Icons.arrow_drop_down),
                         iconSize: 24,
@@ -140,14 +139,14 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
                         ),
                         onChanged: (data) {
                           setState(() {
-                            dropdownValue_2 = data.toString();
+                            dropdownValue_2 = data;
                           });
                         },
                         items: subjectNo
-                            .map<DropdownMenuItem<String>>((String value) {
-                          return DropdownMenuItem<String>(
+                            .map<DropdownMenuItem<double>>((double value) {
+                          return DropdownMenuItem<double>(
                             value: value,
-                            child: Text(value),
+                            child: Text(value.toString()),
                           );
                         }).toList(),
                       ),
@@ -306,17 +305,21 @@ class _SGPAAppPageState extends State<SGPAAppPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
-              if (count == int.parse(dropdownValue_2)) {
-                obj.performSum(int.parse(dropdownValue_2), subjectGpa,
-                    subjectCreditHours, count);
+              if (count == dropdownValue_2) {
+                store = subjectGpa * subjectCreditHours;
+                sStore = sStore + store;
+                sumOfCredits = sumOfCredits + subjectCreditHours;
+                finalGpa = (sStore) / sumOfCredits;
+                obj.showResult(finalGpa);
                 count = 0;
                 Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => sgpa_result_page()));
-              } else {
-                obj.performSum(int.parse(dropdownValue_2), subjectGpa,
-                    subjectCreditHours, count);
-                count++;
               }
+              count++;
+              sumOfCredits = sumOfCredits + subjectCreditHours;
+              store = subjectGpa * subjectCreditHours;
+              sStore = sStore + store;
+              getDropDownItem();
             },
           ),
         ],

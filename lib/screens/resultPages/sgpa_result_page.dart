@@ -82,6 +82,9 @@ class sgpa_result_page extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    const SizedBox(
+                      height: 100,
+                    ),
                     const Text(
                       'This is Your Semester GPA\n ',
                       textAlign: TextAlign.center,
