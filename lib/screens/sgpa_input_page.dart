@@ -14,15 +14,6 @@ import 'package:comsatscgpacalculator/components/reusable_card.dart';
 import 'package:comsatscgpacalculator/components/round_icon_button.dart';
 
 SGPABrain obj = SGPABrain();
-double subjectGpa = 4;
-double subjectCreditHours = 4;
-double sumOfCredits = 0;
-double finalGpa = 0;
-double store = 0;
-double sStore = 0;
-int count = 1;
-int noOfSubjects = 0;
-double dropdownValue_2 = 1;
 
 class SGPAAppPage extends StatefulWidget {
   const SGPAAppPage({Key key}) : super(key: key);
@@ -33,6 +24,15 @@ class SGPAAppPage extends StatefulWidget {
 }
 
 class _SGPAAppPageState extends State<SGPAAppPage> {
+  double subjectGpa = 4;
+  double subjectCreditHours = 4;
+  double sumOfCredits = 0;
+  double finalGpa = 0;
+  double store = 0;
+  double sStore = 0;
+  int count = 1;
+  int noOfSubjects = 0;
+  double dropdownValue_2 = 1;
   List<double> subjectNo = [1, 2, 3, 4, 5, 6];
   void getDropDownItem() {
     setState(() {
